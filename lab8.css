@@ -6,17 +6,24 @@ table{
     border: 1px solid black;
     margin-left: 15%;
     margin-top: 10%;
-    border-radius: 20px;
+    border-radius: 10px;
+    background-color: rgb(236, 236, 152);
     
 }
 td{
     padding: 10px;
     border: 1px solid rgb(10, 94, 38);
+    border-radius: 2px;
 }
 th{
     text-align: center;
-    border: 1px solid orange;
-    background-color: orange;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border: 1px solid rgb(176, 176, 245);
+    background-color: #d65106;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    color: beige;
+}
+.sr{
+    margin-left: 20%;
+    
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template match="/">
+		<html>
+				<body>
+					<h1 style="text-align:center">Student Details</h1>
+					<table border="2" align="center">
+						<tr bgcolor = "grey">
+								<th>NAME</th>
+		                  <th>UNIVERSITY</th>
+		                  <th>PHONE</th>
+		                  <th>EMAIL</th>	>
+		            </tr>
+
+	                <xsl:for-each select="Christ/COMPUTER-SCIENCE">
+	                	<tr>
+	                		<td>
+	                			<xsl:value-of select="stu-name"/>
+	                		</td>
+	                		<td>
+	                			<xsl:value-of select="stu-university"/>
+	                     </td>
+	                     <td>
+	                        <xsl:value-of select="stu-phone"/>
+	                     </td>
+	                     <td>
+	                        <xsl:value-of select="stu-email"/>
+	                     </td>       
+					   	</tr>
+		                </xsl:for-each>
+		            </table>
+		        </body>
+		    </html>
+	</xsl:template>
+</xsl:stylesheet>

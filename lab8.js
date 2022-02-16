@@ -15,13 +15,13 @@ angular.module("Packages",[]) //This is a module named as packages as under this
 .controller("Packagesctrl",function($scope) //This works as a controller
 {
     var hotels = [
-        {name:'Royal Hotels',doa:new Date("January 31 2022"),location:"Bangalore",rating:"5 Star",price:2000},
-        {name:'Prestige Hotels',doa:new Date("February 12 2022"),location:"Bangalore",rating:"4 star",price:1500},
-        {name:'Kerala Palace',doa:new Date("February 21 2022"),location:"Kerala",rating:"4.5 star",price:1800},
-        {name:'Mysore Serenities',doa:new Date("March 10 2022"),location:"Mysore",rating:"3 star",price:1200},
-        {name:'Jagannath Hotels',doa:new Date("January 12 2022"),location:"Bhubaneshwar",rating:"5 star",price:2500},
-        {name:'Puri Residency',doa:new Date("April 1 2022"),location:"Puri",rating:"4.1 star",price:1600},
-        {name:'Hotel Taj',doa:new Date("April 2 2022"),location:"Mumbai",rating:"5 star",price:5000}
+        {name:'Kake da dhabha',doa:new Date("January 31 2016"),location:"Delhi",rating:"5 Star",price:2000},
+        {name:'Chatkara',doa:new Date("February 12 2016"),location:"Bangalore",rating:"4 star",price:1500},
+        {name:'Hira halwai',doa:new Date("February 21 2016"),location:"Delhi",rating:"4.5 star",price:1800},
+        {name:'Veer ji Chap',doa:new Date("March 10 2015"),location:"Delhi",rating:"3 star",price:1200},
+        {name:'Jagannath foods',doa:new Date("January 12 2016"),location:"Bhubaneshwar",rating:"5 star",price:2500},
+        {name:'Xero degrees',doa:new Date("April 1 2015"),location:"Gurugram",rating:"4.1 star",price:1600},
+        {name:'Taj',doa:new Date("April 2 2015"),location:"Mumbai",rating:"5 star",price:5000}
     ];
     $scope.hotels = hotels;
     $scope.rowlimit = 7;

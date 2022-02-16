@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="cat.xsl"?>
+<Christ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="cat.xsd">
+   
+   <COMPUTER-SCIENCE>
+    <stu-name>Akshay</stu-name>>
+    <stu-university>45</stu-university>>
+    <stu-phone>8826239484</stu-phone>>
+    <stu-email>akshay@gmail.com</stu-email>>
+   </COMPUTER-SCIENCE>
+
+   <COMPUTER-SCIENCE>
+    <stu-name>Gyan</stu-name>>
+    <stu-university>25</stu-university>>
+    <stu-phone>8473423945</stu-phone>>
+    <stu-email>gyan@gmail.com</stu-email>>
+   </COMPUTER-SCIENCE>
+
+   <COMPUTER-SCIENCE>
+    <stu-name>Yash</stu-name>>
+    <stu-university>35</stu-university>>
+    <stu-phone>6784723945</stu-phone>>
+    <stu-email>rishu@gmail.com</stu-email>>
+   </COMPUTER-SCIENCE>
+
+   <COMPUTER-SCIENCE>
+    <stu-name>Aditya</stu-name>>
+    <stu-university>35</stu-university>>
+    <stu-phone>4584723945</stu-phone>>
+    <stu-email>adi@gmail.com</stu-email>>
+   </COMPUTER-SCIENCE>
+
+</Christ>

@@ -1,0 +1,383 @@
+<html>
+    <head>
+        <title>GATEWAYS 2022</title>
+        <script>
+            var myCookies = {};
+            var vad = {};
+            function restrictAlphabets(e) {
+                 var x = e.which; //which function return ascii code, same as e.keycode. | e is the event which is input.
+                 console.log(e); 
+                 if ((x >= 48 && x <= 57))
+                     return true;
+                 else
+                     return false;
+             }
+             function restrictNumeric(e) {
+                 var x = e.which || e.keycode;
+                 if ((x >= 65 && x <= 122))
+                     return true;
+                 else
+                     return false;
+             }
+             function checkno(){
+                 var n = document.getElementById("Rno").value;
+                 if(n.length == 10){
+                     localStorage._number = n;
+                     vad[1]=1;
+                     return true;
+                 }
+                 else{
+                     window.alert("ENTER 10 DIGITS ONLY");
+                     document.getElementById("Rno").value="";
+                     vad[1]=0
+                     return false;
+                 }
+             }
+             function agec(){
+                 var a = document.getElementById("age").value;
+                 vad[2] = 0;
+                 if(a<0){
+                     window.alert("AGE CAN NOT BE NEGATIVE");
+                     document.getElementById("age").value="";
+                     vad[2]=0;
+                     return false;
+                 }
+                 vad[2]=1;
+                 return true;
+             }
+             function checkmail(){
+                
+                var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@+([a-z.]|)+(christuniversity.in|christuniversity.com)$/;  
+                var receivedEmail = document.getElementById("email").value.trim();  
+                if(receivedEmail.length >=1){
+                if (!(receivedEmail.toLowerCase().match(validRegex))) {  
+                    window.alert("Please enter official email address.");
+                    document.getElementById("email").value = "";  
+                    vad[3]=0;
+                    return false;  
+                }
+            }
+                vad[3]=1;
+                localStorage._email = receivedEmail;
+                
+
+             }
+             function usnm(){
+              
+                 var u = document.getElementById("username").value;
+                 
+                 u = u[0].toUpperCase() + u.slice(1);
+    
+                 document.getElementById("username").value = u;
+                 vad[4]=1;
+                 return true;
+            }
+             function checkpswd(){
+                var lowerCaseLetters = /[a-z]/g;
+                var upperCaseLetters = /[A-Z]/g;
+                var numbers = /[0-9]/g;
+                var specials =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+                var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~`!@#$%^_+={}|:"<>,.?])[A-Za-z\d@$!%*?&]{8,}$/;
+                var receivedpswd = document.getElementById("pswd").value.trim();  
+                vad[5] = 0;
+                if(receivedpswd.length >=1){
+                if(!receivedpswd.match(lowerCaseLetters))
+                {  
+                    window.alert("missing lowerCaseLetters");
+                    document.getElementById("pswd").value = "";
+                    return false;
+                }
+                else if(!receivedpswd.match(upperCaseLetters))
+                {  
+                    window.alert("missing upperCaseLetters");
+                    document.getElementById("pswd").value = "";
+                    return false;
+                }
+                else if(!receivedpswd.match(numbers))
+                {  
+                    window.alert("missing number");
+                    document.getElementById("pswd").value = "";
+                    return false;
+                }
+                else if(receivedpswd.length < 8)
+                {
+                    window.alert("short password");
+                    document.getElementById("pswd").value = "";
+                    return false;
+                }
+                else if(!receivedpswd.match(specials))
+                {
+                    window.alert("missing special character");
+                    document.getElementById("pswd").value = "";
+                    return false;
+                }
+                document.getElementById("rq").style.color = "green";
+                vad[5] = 1;
+                }
+                
+                
+               
+            }
+            function myFunction() {
+                document.getElementById("myForm").reset();
+            }
+            function chk(){
+                if(vad[4]==1 && vad[3]==1 ){
+                    vad[6]=1;
+                    return true;
+                }
+                else{
+                    vad[6] = 0;
+                    if(vad[4] != 1){
+                    document.getElementById("username").focus();
+                    }
+                    else{
+                        document.getElementById("email").focus();
+                    }
+                    window.alert("ENTER USERNAME AND EMAIL");
+                }
+            }
+            function myFunctions() {
+                myCookies["_email"] = document.getElementById("email").value;
+                myCookies["_usname"] = document.getElementById("username").value;
+                console.log(myCookies);
+                document.cookie = "";
+                var expiresAttrib = "expires=Thu, 11 Feb 2029 12:00:00 UTC";
+                var cookieString = "";
+                for (var key in myCookies)
+                {
+                    cookieString = key+"="+myCookies[key]+";"+expiresAttrib+";";
+                    document.cookie = cookieString;
+                    console.log(cookieString);
+                }
+                var m = document.getElementById("sname").value;
+                if(m.length>=1){
+                    vad[0] = 1;
+                }
+                if(vad[0]!=1){
+                    window.alert("ENTER NAME");
+                    document.getElementById("sname").focus();
+                }else if(vad[1]!=1){
+                    window.alert("ENTER PHONE NUMBER");
+                    document.getElementById("Rno").focus();
+                }else if(vad[2]!=1){
+                    window.alert("ENTER AGE");
+                    document.getElementById("age").focus();
+                }else if(vad[3]!=1){
+                    window.alert("ENTER EMAIL");
+                    document.getElementById("email").focus();
+                }else if(vad[4]!=1){
+                    window.alert("ENTER USERNAME");
+                    document.getElementById("username").focus();
+                }else{
+
+                
+                window.alert("THANKS");
+                window.open("catd.html");
+                }
+            }
+        
+             
+    
+        </script>
+    </head>
+    <style>
+        h1{
+            text-align: center;
+            font-weight: bolder;
+            font-family: cursive;
+        }
+        h2{
+            text-align: justify;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-size: 19px;
+            font-weight: 900;
+        }
+        h3{
+            text-align: center;
+            font-weight: bolder;
+            font-family: cursive;
+        }
+        body{
+            background-image: url("https://wallpaperaccess.com/full/1209458.jpg");    
+            background-repeat: no-repeat;
+          
+        }
+        form{
+            position: relative;
+        }
+        label{
+            color: white;
+            font-weight: bold;
+            
+
+        }
+        .fm{
+            height: 100%;
+            width: 35%;
+            margin: auto;
+            opacity: 0.8;
+                        
+        }
+        .dc{
+            background-color: aquamarine;
+            width: 100%;
+        
+            margin: auto;
+        
+
+        }
+        #rq{
+            color: red;
+            margin-left:7.5% ;
+            margin-right: 7.5%;
+        }
+        
+        .inp{
+            height: 6%;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEWAgICQdD0xAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII=");
+            border: none;
+            border-bottom: 6px solid rgb(3, 21, 26);
+            background-color: unset;
+            outline: none;
+            width: 85%;
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+        
+            color:white;
+            font-weight: bolder;
+        }
+
+        input::placeholder{
+            transition: scaleX(0.5);
+            opacity: 1;
+            color: white;
+            font-weight: bolder;
+            font-weight: 900;
+        
+        }
+        
+        button{
+            opacity: 1;
+            background-color: rgb(27, 148, 27);
+            color:white;
+            font-weight: bolder;
+            border-radius: 8%;
+            padding-left: 10px;
+            width: 250px;
+            height: 60px;
+            border: none;
+            font-size: larger;
+        
+        }
+        .ml{
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEWAgICQdD0xAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII=");
+            width: 85%;
+            margin-left: 7.5%;
+            margin-right: 7.5%;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .rows {
+            display: flex;
+            margin-left: 40%;
+            margin-right: 2%;
+        }
+        .row{
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            margin-left: 10px;
+        }
+        .columns{
+            flex: 50%;
+            margin-left: 38px;
+            margin-right: -50px;
+        }
+       
+        input:checked{
+            width: 50px;
+        }
+        .rd{
+            margin-left: 15px;
+        }
+    </style>
+    <body>
+       
+        <form class="fm" id="myForm">
+            
+            <div class="dc">
+                <h1>GATEWAYS 2022</h1>
+                <h3>TECHNOVID</h3>
+                <div class="ip">
+                    <input type="text" name="e" id="sname" placeholder="NAME" class="inp" required onkeypress='return restrictNumeric(event)'>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <input type="text" name="e" id="Rno" class="inp" placeholder="MOBILE NUMBER" pattern="[1-9]{1}[0-9]{9}" required onkeypress='return restrictAlphabets(event)' onblur="return checkno()">
+                    
+                </div> 
+                <br><br>
+                
+                <div class="ip">
+                    <span>
+                    <input type="email" name="e" id="email" placeholder="EMAIL" class="inp" onblur="return checkmail()" required>
+                    </span>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <span>
+                    <input type="number" name="e" id="age" placeholder="AGE" class="inp" min="1" required onblur="return agec()">
+                    </span>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <span>
+                    <input type="text" name="e" id="branch" placeholder="BRANCH" class="inp" required>
+                    </span>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <span>
+                    <input type="text" name="e" id="college" placeholder="COLLEGE" class="inp" required>
+                    </span>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <span>
+                    <input type="text" name="e" id="state" placeholder="STATE" class="inp" required>
+                    </span>
+                </div>
+                <br><br>
+                <div class="ip">   
+                    <input type="text" name="e" id="add" placeholder="ADDRESS" class="inp">
+                </div>
+                <br><br>
+        
+                <div class="ip">
+                    <input type="text" name="e" id="username" placeholder="USER NAME" class="inp" onblur="return usnm()" required>
+                </div>
+                <br><br>
+                <div class="ip">
+                    <input type="password" name="e" id="pswd"  onClick="chk()" onblur="checkpswd()" placeholder="PASSWORD"  required class="inp">
+                </div>
+                <div id="rq">Password must contain atleat one lowercase alphabet,uppercase alphabet,numeric value and special character and should be on min 8 characters</div>
+                <br><br>
+                <div class="rows">
+                
+                    <button onclick="myFunctions()" value="Submit form">SUBMIT</button>
+                    &emsp;
+                    <button onclick="myFunction()" value="Reset form">RESET</button>
+                
+                <br><br><br><br>
+            </div>
+            </div>
+        </form>
+    </body>
+</html>

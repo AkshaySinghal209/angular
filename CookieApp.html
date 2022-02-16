@@ -1,0 +1,162 @@
+<!-- https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js -->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+		body{
+			background-image: url("https://wallpaperaccess.com/full/1209458.jpg");  
+		}
+		button{
+			height: 25px;
+			color: bisque;
+			font-weight: bolder;
+			background-color: darkolivegreen;
+			margin: 15px;
+			width: 250px;
+		}
+		input{
+			background-color: blanchedalmond;
+			margin-left: 10px;
+		}
+		h1{
+			color: darkcyan;
+			font-family: cursive;
+			margin-left: 15px;
+		}
+		h2{
+			color: darkred;
+			font-family: monospace;
+			margin-left: 15px;
+		}
+		.b{
+			margin-left: 25%;
+			width: 45%;
+			background-color: darksalmon;
+			opacity: 0.8;
+			
+		}
+		p{
+			margin-left: 15px;
+		}
+	</style>
+<script>
+var myCookies = {};
+loadCookies();
+function saveCookies()
+{
+	console.log("hello");
+	myCookies["_user"] = document.getElementById("user").value;
+	myCookies["_uage"] = document.getElementById("age").value.toString();
+	myCookies["_email"] = document.getElementById("email").value;
+	myCookies["_color"] = document.getElementById("color").value;
+	console.log(myCookies);
+	//Start Reuseable Section
+	document.cookie = "";
+	var expiresAttrib = "expires=Thu, 11 Feb 2022 12:00:00 UTC";
+	var cookieString = "";
+	for (var key in myCookies)
+	{
+		cookieString = key+"="+myCookies[key]+";"+expiresAttrib+";";
+		document.cookie = cookieString;
+		console.log(cookieString);
+	}
+	//End Reuseable Section
+	//document.getElementById("out").innerHTML = document.cookie;
+}
+function removeCookies()
+{
+	console.log("hello");
+	console.log(cookieString);
+	//Start Reuseable Section
+	document.cookie = "";
+	var expiresAttrib = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	var cookieString = "";
+	for (var key in myCookies)
+	{
+		cookieString = key+"=;"+expiresAttrib+"; path=/;";
+		console.log(cookieString);
+		document.cookie = cookieString;
+		console.log(cookieString);
+	}
+	//End Reuseable Section
+	//document.cookie = "_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	//document.getElementById("out").innerHTML = document.cookie;
+}
+
+function loadCookies()
+{
+	//Start Reuseable Section
+	myCookies = {};
+	var kv = document.cookie.split(";");
+	for (var id in kv)
+	{
+		var cookie = kv[id].split("=");
+		myCookies[cookie[0].trim()] = cookie[1];
+	}
+	//End Reuseable Section
+	document.getElementById("user").value = myCookies["_user"];
+	document.getElementById("age").value = myCookies["_uage"];
+	document.getElementById("email").value = myCookies["_email"];
+	document.getElementById("color").value = myCookies["_color"];
+}
+
+function changecolor(){
+    document.body.style.backgroundColor = myCookies["_color"];
+}
+function saveValues()
+{
+	sessionStorage._user = document.getElementById("user").value;
+	sessionStorage._uage = document.getElementById("age").value.toString();
+	sessionStorage._email = document.getElementById("email").value;
+	sessionStorage._color = document.getElementById("color").value;
+}
+
+function loadValues()
+{
+	document.getElementById("user").value = sessionStorage._user;
+	document.getElementById("age").value = sessionStorage._uage;
+	document.getElementById("email").value = sessionStorage._email;
+	document.getElementById("color").value = sessionStorage._color;
+}
+function savelocalValues()
+{
+	sessionStorage._user = document.getElementById("user").value;
+	sessionStorage._uage = document.getElementById("age").value.toString();
+	sessionStorage._email = document.getElementById("email").value;
+	sessionStorage._color = document.getElementById("color").value;
+}
+
+function loadlocalValues()
+{
+	document.getElementById("user").value = sessionStorage._user;
+	document.getElementById("age").value = sessionStorage._uage;
+	document.getElementById("email").value = sessionStorage._email;
+	document.getElementById("color").value = sessionStorage._color;
+}
+
+</script>
+</head>
+<body>
+	<div class="b">
+	<h1>! CHECK COOKIES, EAT COOKIES !</h1> <br>
+	<h2>TELL US ABOUT YOURSELF</h2><br>
+<input type="text" id="user" placeholder="USER NAME"><br> <br>
+<input type="text" id="age" placeholder="AGE"><br><br>
+<input type="email" id="email" placeholder="EMAIL"><br><br>
+<input type="text" id="color" placeholder="COLOR"><br><br><br>
+<p>WORK WITH COOKIES</p>
+<button onclick="saveCookies()">Save To Cookies</button>
+<button onclick="loadCookies()">Load From Cookies</button>
+<button onclick="removeCookies()">Remove Cookies</button><br>
+
+<button onclick="changecolor();" value="Change color">CHANGE COLOR</button><br>
+<p>WORK WITH SESSION</p>
+<button onclick="saveValues()">SAVE IN SESSION</button>
+<button onclick="loadValues()">LOAD FROM SESSION</button><br>
+<p>WORK IN LOCAL</p>
+<button onclick="savelocalValues()">SAVE TO LOCAL</button>
+<button onclick="loadlocalValues()">LOAD FROM LOCAL</button><br>
+<p id="out"></p>
+</div>
+</body>
+</html>

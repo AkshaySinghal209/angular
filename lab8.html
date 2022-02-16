@@ -1,27 +1,42 @@
+<!-- ng-app − This directive defines and links an AngularJS application to HTML.
+
+ng-model − This directive binds the values of AngularJS application data to HTML input controls.
+
+ng-bind − This directive binds the AngularJS Application data to HTML tags. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="lab8.js"></script>
     <link rel="stylesheet" href="lab8.css">
 </head>
 <body ng-app="Packages">
     <div ng-controller="Packagesctrl">
-        Rows to display:<input type="number" step="1" min="0" max="7" ng-model="rowlimit"/><br><br>
-        Search:<input type="text" placeholder="Search for hotels" ng-model="search"><br><br>
-        Enter the number of characters:<input type="text" placeholder="Enter no. of characters" ng-model="limit"><br><br>
+        Rows to display:  <input type="number" step="1" min="0" max="7" ng-model="rowlimit"/><br><br>
+        Search:  <input type="text" placeholder="Search for hotels" ng-model="search"><br><br>
+        Enter the number of characters:  <input type="text" placeholder="Enter no. of characters" ng-model="limit"><br><br>
         <table>
             <tr>
-                <th>Name</th>
-                <th>Date of availability</th>
-                <th>Location</th>
-                <th>Rating</th>
-                <th>Price(number)</th>
-                <th>Price(Currency)</th>
+                <th>RESTAURANTS
+                    <br>
+                    <input type="text" ng-model="search.name" placeholder="Enter your restaurant name">
+                </th>
+                <th>DATE(of incorporation)
+                <br>
+                    <input type="text" ng-model="search.doa" placeholder="Enter date of incubation">
+                </th>
+                <th>LOCATION
+                <br>
+                    <input type="text" ng-model="search.location" placeholder="Enter location">
+                </th>
+                <th>Rating
+                <br>
+                    <input type="text" ng-model="search.rating" placeholder="RATINGS">
+                </th>
+                <th>Price(for two)</th>
             </tr>
             <tbody>
                 <tr ng-repeat="htl in hotels|limitTo:rowlimit|filter:search">
@@ -29,7 +44,7 @@
                     <td>{{htl.doa|date:"dd/MM/yyyy"}}</td>
                     <td>{{htl.location|uppercase}}</td>
                     <td>{{htl.rating|lowercase}}</td>
-                    <td>{{htl.price|number:0}}</td>
+                    <!-- <td>{{htl.price|number:0}}</td> -->
                     <td>&#8377;{{htl.price|number:0}}</td>
                 </tr>
             </tbody>

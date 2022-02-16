@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Parser</title>
+    <style>
+        h1 {
+            align-items: center;
+            text-align: center;
+            
+        }
+
+        
+        button {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
+         button {
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+
+          button:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+
+          .button {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
+         .button {
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+          }
+
+          .button:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+        
+         
+    </style>
+    <script>
+        var xmlDoc;
+        function loadxmldoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    xmlDoc = this.responseXML;
+                    myFunction();
+                }
+            };
+            xmlhttp.open("GET", "cat2x.xml", true);
+            xmlhttp.send();
+        }
+        function myFunction(xml) {
+            table = "<tr><th>Student Name</th><th>University Name</th></tr>";
+            x = xmlDoc.getElementsByTagName("COMPUTER-SCIENCE")
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("stu-name")[0].childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("stu-university")[0].childNodes[0].nodeValue + "</td></tr>" 
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>REGISTRATION MANAGEMENT</h1>
+    <p style="align-content: center;"><center><button onclick="loadxmldoc()">REFRESH LIST</button></center></p>
+    <center>
+    <table id="demo" border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>University Name</th>
+        </tr>
+    </table>
+    <br>
+</center>
+</body>
+
+</html>
